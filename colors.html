@@ -4,15 +4,40 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="colors.css" />
     <title>Document</title>
   </head>
   <body>
-    <div id="colorPicker">
-      <input type="text" id="hex" />
-      <input type="text" id="rgb" />
-      <input type="text" id="hsl" />
-      <input type="color" id="color" />
-    </div>
+    <header></header>
+    <main>
+      <article id="colorPicker">
+        <div id="inputFields">
+          <label class="inputfield">hex <input type="text" id="hex" /></label>
+          <label class="inputfield">rgb<input type="text" id="rgb" /></label>
+          <label class="inputfield">hsl<input type="text" id="hsl" /></label>
+        </div>
+        <h2 id="choose">
+          Select<span> <input type="color" id="colorMain" /> </span> color
+        </h2>
+        <select id="select" name="select">
+          <option value="empty">choose the harmony</option>
+          <option value="analogus">Analogus</option>
+          <option value="mono">Monochromatic</option>
+          <option value="triad">Triad</option>
+          <option value="complementary">Complementary</option>
+          <option value="compound">Compound</option>
+          <option value="shades">Shades</option>
+        </select>
+        <div id="mainColorBox"></div>
+        <div id="colorBoxes">
+          <div id="color1" class="color-box"></div>
+          <div id="color2" class="color-box"></div>
+          <div id="color3" class="color-box"></div>
+          <div id="color4" class="color-box"></div>
+        </div>
+      </article>
+    </main>
+    <footer></footer>
     <script src="colors.js"></script>
   </body>
 </html>

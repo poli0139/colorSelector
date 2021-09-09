@@ -1,3 +1,49 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
 #colorPicker {
+  margin: auto;
+  width: fit-content;
+  padding: 1rem;
+  border: solid black 1px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#inputFields {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-evenly;
+}
+.inputfield {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-transform: uppercase;
+}
+.inputfield input {
+  max-width: 80%;
   text-align: center;
+}
+#mainColorBox {
+  width: 25%;
+  height: 3rem;
+  margin-top: 1rem;
+  border: solid black 1px;
+}
+#colorBoxes {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+  margin-top: 1rem;
+}
+#colorBoxes div {
+  width: 20%;
+  height: 3rem;
+  background-color: black;
 }
