@@ -29,13 +29,13 @@ function readSelect(select) {
   } else if (select === "mono") {
     monocromaticCalc();
   } else if (select === "triad") {
-    console.log("triad");
+    triadCalc();
   } else if (select === "complementary") {
-    console.log("complementary");
+    complementaryCalc();
   } else if (select === "compound") {
-    console.log("compound");
+    compoundCalc();
   } else if (select === "shades") {
-    console.log("shades");
+    shadesCalc();
   }
 }
 
@@ -66,23 +66,10 @@ function getInputChanges() {
   });
 }
 
-// function showRGB(rgbColors) {
-//   let color = `R:${rgbColors.r} G:${rgbColors.g} B:${rgbColors.b}`;
-//   //   console.log(color);
-//   let rgbInput = document.querySelector("#rgb");
-//   rgbInput.value = color;
-// }
-
-// function showHsl(HSL) {
-//   //   console.log(HSL);
-//   let colorHSL = `${Math.floor(HSL.h)} ${Math.floor(HSL.s)} ${Math.floor(
-//     HSL.l
-//   )}`;
-//   let hslInput = document.querySelector("#hsl");
-//   hslInput.value = colorHSL;
-// }
-
 // *****HARMONIES
+
+//ANALOGUS
+
 function analogCalc() {
   // get the hsl value from the html
   const hslValue = document.querySelector("#hsl").value;
@@ -111,6 +98,8 @@ function analogCalc() {
   box4.style.backgroundColor = `rgb(${rgb4[0]}, ${rgb4[1]}, ${rgb4[2]})`;
 }
 
+//MONOCROMATIC
+
 function monocromaticCalc() {
   console.log("monochromatic");
   const hslValue = document.querySelector("#hsl").value;
@@ -120,16 +109,16 @@ function monocromaticCalc() {
     .map((value) => parseInt(value));
 
   // add a few degrees in H
-  const analog1HSL = [originalH, Math.floor(originalS / 2), originalL];
-  const analog2HSL = [originalH, Math.floor(originalS / 4), originalL];
-  const analog3HSL = [originalH, Math.floor(originalS / 6), originalL];
-  const analog4HSL = [originalH, Math.floor(originalS / 8), originalL];
+  const mono1HSL = [originalH, Math.floor(originalS / 2), originalL];
+  const mono2HSL = [originalH, Math.floor(originalS / 4), originalL];
+  const mono3HSL = [originalH, Math.floor(originalS / 6), originalL];
+  const mono4HSL = [originalH, Math.floor(originalS / 8), originalL];
 
   // transform new hsl into rgb
-  const rgb1 = hslToRgb(analog1HSL);
-  const rgb2 = hslToRgb(analog2HSL);
-  const rgb3 = hslToRgb(analog3HSL);
-  const rgb4 = hslToRgb(analog4HSL);
+  const rgb1 = hslToRgb(mono1HSL);
+  const rgb2 = hslToRgb(mono2HSL);
+  const rgb3 = hslToRgb(mono3HSL);
+  const rgb4 = hslToRgb(mono4HSL);
 
   // apply the new rgb to the boxes
   box1.style.backgroundColor = `rgb(${rgb1[0]},${rgb1[1]},${rgb1[2]})`;
@@ -137,6 +126,119 @@ function monocromaticCalc() {
   box3.style.backgroundColor = `rgb(${rgb3[0]}, ${rgb3[1]}, ${rgb3[2]})`;
   box4.style.backgroundColor = `rgb(${rgb4[0]}, ${rgb4[1]}, ${rgb4[2]})`;
 }
+
+//TRIAD
+function triadCalc() {
+  const hslValue = document.querySelector("#hsl").value;
+
+  const [originalH, originalS, originalL] = hslValue
+    .split(" ")
+    .map((value) => parseInt(value));
+
+  // add a few degrees in H
+  const triad1HSL = [originalH + 42.5, originalS + 42.5, originalL + 42.5];
+  const triad2HSL = [originalH + 20, originalS + 20, originalL + 20];
+  const triad3HSL = [originalH + 85, originalS + 85, originalL + 85];
+  const triad4HSL = [originalH + 10, originalS + 10, originalL + 10];
+
+  // transform new hsl into rgb
+  const rgb1 = hslToRgb(triad1HSL);
+  const rgb2 = hslToRgb(triad2HSL);
+  const rgb3 = hslToRgb(triad3HSL);
+  const rgb4 = hslToRgb(triad4HSL);
+
+  // apply the new rgb to the boxes
+  box1.style.backgroundColor = `rgb(${rgb1[0]},${rgb1[1]},${rgb1[2]})`;
+  box2.style.backgroundColor = `rgb(${rgb2[0]}, ${rgb2[1]}, ${rgb2[2]})`;
+  box3.style.backgroundColor = `rgb(${rgb3[0]}, ${rgb3[1]}, ${rgb3[2]})`;
+  box4.style.backgroundColor = `rgb(${rgb4[0]}, ${rgb4[1]}, ${rgb4[2]})`;
+}
+//COMPLEMENTARY
+function complementaryCalc() {
+  const hslValue = document.querySelector("#hsl").value;
+
+  const [originalH, originalS, originalL] = hslValue
+    .split(" ")
+    .map((value) => parseInt(value));
+
+  // add a few degrees in H
+  const complem1HSL = [originalH + 113, originalS + 113, originalL + 133];
+  const complem2HSL = [originalH + 50, originalS + 50, originalL + 50];
+  const complem3HSL = [originalH + 28.25, originalS + 28.25, originalL + 28.25];
+  const complem4HSL = [originalH + 14, originalS + 14, originalL + 14];
+
+  // transform new hsl into rgb
+  const rgb1 = hslToRgb(complem1HSL);
+  const rgb2 = hslToRgb(complem2HSL);
+  const rgb3 = hslToRgb(complem3HSL);
+  const rgb4 = hslToRgb(complem4HSL);
+
+  // apply the new rgb to the boxes
+  box1.style.backgroundColor = `rgb(${rgb1[0]},${rgb1[1]},${rgb1[2]})`;
+  box2.style.backgroundColor = `rgb(${rgb2[0]}, ${rgb2[1]}, ${rgb2[2]})`;
+  box3.style.backgroundColor = `rgb(${rgb3[0]}, ${rgb3[1]}, ${rgb3[2]})`;
+  box4.style.backgroundColor = `rgb(${rgb4[0]}, ${rgb4[1]}, ${rgb4[2]})`;
+}
+
+//COMPOUND
+function compoundCalc() {
+  // get the hsl value from the html
+  const hslValue = document.querySelector("#hsl").value;
+
+  // get the orginal values
+  const [originalH, originalS, originalL] = hslValue
+    .split(" ")
+    .map((value) => parseInt(value));
+
+  // add a few degrees in H
+  const compund1HSL = [originalH + 113, originalS + 113, originalL + 133];
+  const compund2HSL = [originalH, originalS, originalL + 4];
+  const compund3HSL = [originalH, originalS, originalL + 6];
+  const compund4HSL = [originalH, originalS, originalL + 8];
+
+  // transform new hsl into rgb
+  const rgb1 = hslToRgb(compund1HSL);
+  const rgb2 = hslToRgb(compund2HSL);
+  const rgb3 = hslToRgb(compund3HSL);
+  const rgb4 = hslToRgb(compund4HSL);
+
+  // apply the new rgb to the boxes
+  box1.style.backgroundColor = `rgb(${rgb1[0]},${rgb1[1]},${rgb1[2]})`;
+  box2.style.backgroundColor = `rgb(${rgb2[0]}, ${rgb2[1]}, ${rgb2[2]})`;
+  box3.style.backgroundColor = `rgb(${rgb3[0]}, ${rgb3[1]}, ${rgb3[2]})`;
+  box4.style.backgroundColor = `rgb(${rgb4[0]}, ${rgb4[1]}, ${rgb4[2]})`;
+}
+
+//SHADES
+function shadesCalc() {
+  // get the hsl value from the html
+  const hslValue = document.querySelector("#hsl").value;
+
+  // get the orginal values
+  const [originalH, originalS, originalL] = hslValue
+    .split(" ")
+    .map((value) => parseInt(value));
+
+  // add a few degrees in H
+  const shades1HSL = [originalH, originalS, originalL + 2];
+  const shades2HSL = [originalH, originalS, originalL + 4];
+  const shades3HSL = [originalH, originalS, originalL + 6];
+  const shades4HSL = [originalH, originalS, originalL + 8];
+
+  // transform new hsl into rgb
+  const rgb1 = hslToRgb(shades1HSL);
+  const rgb2 = hslToRgb(shades2HSL);
+  const rgb3 = hslToRgb(shades3HSL);
+  const rgb4 = hslToRgb(shades4HSL);
+
+  // apply the new rgb to the boxes
+  box1.style.backgroundColor = `rgb(${rgb1[0]},${rgb1[1]},${rgb1[2]})`;
+  box2.style.backgroundColor = `rgb(${rgb2[0]}, ${rgb2[1]}, ${rgb2[2]})`;
+  box3.style.backgroundColor = `rgb(${rgb3[0]}, ${rgb3[1]}, ${rgb3[2]})`;
+  box4.style.backgroundColor = `rgb(${rgb4[0]}, ${rgb4[1]}, ${rgb4[2]})`;
+}
+
+//COLOR TRANSLATIONS
 
 function hslToRgb([h100, s100, l100]) {
   var r, g, b;
